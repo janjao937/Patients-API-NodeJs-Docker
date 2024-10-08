@@ -4,6 +4,7 @@ import cors from "cors";
 import { Code } from "./enum/code.enum";
 import { HttpResponse } from "./domain/response";
 import { Status } from "./enum/status.enum";
+import patientRoutes from "./routes/patient.routes";
 
 export class App {
 
@@ -21,12 +22,12 @@ export class App {
         this.app.listen(this.port);
         console.log(`${this.APPLICATION_RUNNING} ${ip.address()}:${this.port}`);
     }
-    middleware():void{
+    private middleware():void{
         this.app.use(cors({origin:"*"}));
         this.app.use(express.json());
     }
-    routes():void {
-        this.app.use("/patiens",(req,res)=>{});
+    private routes():void {
+        this.app.use("/patiens",patientRoutes);
         this.app.get("/",(req,res) => {res.status(Code.OK).send(new HttpResponse(Code.OK,Status.OK,"Welcome to Patients API"))});
         this.app.all("*",(req,res) => {res.status(Code.NOT_FOUND).send(new HttpResponse(Code.NOT_FOUND,Status.NOT_FOUND,this.ROUTE_NOT_FOUND))});
     }
