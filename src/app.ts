@@ -27,7 +27,7 @@ export class App {
         this.app.use(express.json());
     }
     private routes():void {
-        this.app.use("/patiens",patientRoutes);
+        this.app.use("/patients",patientRoutes);
         this.app.get("/",(req:Request,res:Response) => {res.status(Code.OK).send(new HttpResponse(Code.OK,Status.OK,"Welcome to Patients API"))});
         this.app.all("*",(req:Request,res:Response) => {res.status(Code.NOT_FOUND).send(new HttpResponse(Code.NOT_FOUND,Status.NOT_FOUND,this.ROUTE_NOT_FOUND))});
     }
