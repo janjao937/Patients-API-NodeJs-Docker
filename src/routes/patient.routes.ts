@@ -7,9 +7,9 @@ patientRoutes.route('/')
   .get(getPatients)
   .post(createPatient);
 
-// patientRoutes.route('/:patientId')
-//   .get(getPatient)
-//   .put(updatePatient)
-//   .delete(deletePatient);
+patientRoutes.route('/:patientId')
+  .get(getPatient)
+  .put(updatePatient)
+  .delete(deletePatient);
 
 export default patientRoutes;
