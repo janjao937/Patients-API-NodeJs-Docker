@@ -5,8 +5,8 @@ services:
     command: --default-authentication-plugin=caching_sha2_password
     restart: unless-stopped
     volumes: 
-            - ./dbinit/init.sql:/docker-entrypoint-initdb.d \
-            - $HOME/database:/var/lib/mysql
+      - ./dbinit/init.sql:/docker-entrypoint-initdb.d/0_init.sql
+      - $HOME/database:/var/lib/mysql
     ports:
       - 3306:3306
     expose:
